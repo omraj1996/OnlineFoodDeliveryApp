@@ -9,7 +9,7 @@ pipeline {
 
 		stage('Build'){
 			steps {
-				bat "mvn clean install -DskipTests"
+				bat "mvn clean package"
 			}
 		}
 
@@ -21,7 +21,7 @@ pipeline {
 
 		stage('Deploy') {
 			steps {
-			    bat "mvn jar:jar deploy:deploy"
+			    bat "mvn war:war deploy:deploy"
 			}
 		}
 	}
