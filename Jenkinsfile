@@ -34,7 +34,7 @@ pipeline {
         		    -Dsonar.projectName=OnlineFoodDeliveryApp \
         		    -Dsonar.projectVersion=1.0 \
         		    -Dsonar.sources=src/main/java/ \
-        		    -Dsonar.java.binaries=target/classes/ \
+        		    -Dsonar.java.binaries=target/classes/'''
         		}
         	}
         }
