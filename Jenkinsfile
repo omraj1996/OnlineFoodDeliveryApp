@@ -1,6 +1,11 @@
 pipeline {
 	agent any
 
+	environment{
+	    SONARSCANNER='sonarscanner'
+	    SONARSERVER='sonarserver'
+	}
+
 	tools {
       jdk 'JAVA_HOME'
     }
@@ -18,6 +23,21 @@ pipeline {
 				bat "mvn test"
 			}
 		}
+
+		stage('Sonar Analysis'){
+		    environment {
+		        scannerHome = tool "${SONARSCANNER}"
+		    }
+        	steps{
+        		withSonarQubeEnv("${SONARSERVER}"){
+        		    sh '''${scannerHome}/bin/sonar-scanner -Dsonar.projectKey=OnlineFoodDeliveryApp \
+        		    -Dsonar.projectName=OnlineFoodDeliveryApp \
+        		    -Dsonar.projectVersion=1.0 \
+        		    -Dsonar.sources=src/main/java/ \
+        		    -Dsonar.java.binaries=target/classes/ \
+        		}
+        	}
+        }
 
 		stage('Deploy') {
 			steps {
