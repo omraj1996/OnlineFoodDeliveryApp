@@ -21,7 +21,7 @@ pipeline {
 
 		stage('Deploy') {
 			steps {
-			    bat "mvn war:war deploy:deploy"
+			    bat "copy target\\Online-Food-Ordering-App-0.0.1-SNAPSHOT.war \"C:\\Program Files\\Apache Software Foundation\\Tomcat 9.0\\webapps\\Online-Food-Ordering-App-0.0.1-SNAPSHOT.war""
 			}
 		}
 	}
