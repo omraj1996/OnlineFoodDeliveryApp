@@ -30,11 +30,7 @@ pipeline {
 		    }
         	steps{
         		withSonarQubeEnv("${SONARSERVER}"){
-        		    bat "${scannerHome}/bin/sonar-scanner.bat -Dsonar.projectKey=OnlineFoodDeliveryApp
-        		    -Dsonar.projectName=OnlineFoodDeliveryApp
-        		    -Dsonar.projectVersion=1.0
-        		    -Dsonar.sources=src/main/java
-        		    -Dsonar.java.binaries=target/classes"
+        		    bat "${scannerHome}/bin/sonar-scanner.bat -Dsonar.projectKey=OnlineFoodDeliveryApp -Dsonar.projectName=OnlineFoodDeliveryApp -Dsonar.projectVersion=1.0 -Dsonar.sources=src/main/java -Dsonar.java.binaries=target/classes"
         		}
         	}
         }
